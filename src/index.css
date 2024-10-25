@@ -5,14 +5,11 @@
 }
 
 body {
-  position: relative;
-  min-width: 320px;
-  margin: 0;
   background-color: var(--white);
-  font-family: var(--font-primary);
-  font-size: 18px;
+  font-family: var(--font);
+  font-size: 16px;
   line-height: 1.5;
-  color: var(--black);
+  color: var(--text);
   overflow-x: hidden;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -27,7 +24,23 @@ h4,
 h5,
 h6 {
   margin-top: 0;
-  line-height: normal;
+  font-weight: 600;
+  color: var(--main);
+}
+
+h1 {
+  font-size: 48px;
+  line-height: 0.66667;
+}
+
+h2 {
+  font-size: 24px;
+  line-height: 1.33333;
+}
+
+h3 {
+  font-size: 20px;
+  line-height: 1.2;
 }
 
 img {
