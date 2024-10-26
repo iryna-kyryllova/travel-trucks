@@ -14,7 +14,7 @@ const App = () => {
   return (
     <>
       <Header />
-      <Suspense fallback={<Loader />}>
+      <Suspense fallback={<Loader type='page' />}>
         <Routes>
           <Route path='/' element={<HomePage />} />
           <Route path='/campers' element={<ContainerLayout />}>
