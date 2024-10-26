@@ -1,0 +1,9 @@
+.logo {
+  display: flex;
+  width: 136px;
+  margin-right: -136px;
+}
+
+.img {
+  width: 100%;
+}

@@ -1,0 +1,17 @@
+.nav {
+  margin: 0 auto;
+}
+
+.list {
+  display: flex;
+  gap: 32px;
+}
+
+.item {
+  font-weight: 500;
+  color: var(--main);
+}
+
+.active {
+  color: var(--button-hover);
+}

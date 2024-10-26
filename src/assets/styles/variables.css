@@ -11,6 +11,6 @@
   --main: #101828;
 
   --font: 'Inter', sans-serif;
-  --border: 1px solid var(--gray-light);
+  --border: 1px solid var(--badges);
   --transition: 0.3s ease;
 }
