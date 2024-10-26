@@ -1,5 +1,5 @@
 .header {
-  padding: 24px 0;
+  height: var(--header);
   border-bottom: var(--border);
   background-color: var(--inputs);
 }
@@ -7,4 +7,5 @@
 .holder {
   display: flex;
   align-items: center;
+  height: 100%;
 }

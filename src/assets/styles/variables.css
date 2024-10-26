@@ -13,4 +13,6 @@
   --font: 'Inter', sans-serif;
   --border: 1px solid var(--badges);
   --transition: 0.3s ease;
+
+  --header: 73px;
 }

@@ -2,6 +2,10 @@ import { NavLink } from 'react-router-dom'
 import clsx from 'clsx'
 import styles from './Navigation.module.css'
 
+/**
+ * Returns the appropriate class name for a NavLink based on its active state.
+ * Adds the 'active' class when the NavLink is active.
+ */
 const defineNavLinkClassName = ({ isActive }) => clsx(styles.link, isActive && styles.active)
 
 const Navigation = () => {
