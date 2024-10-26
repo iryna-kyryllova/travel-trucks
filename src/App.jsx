@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom'
 import { Toaster } from 'react-hot-toast'
 import Header from 'components/Header/Header'
 import Loader from 'components/Loader/Loader'
+import ContainerLayout from 'layouts/ContainerLayout/ContainerLayout'
 
 const HomePage = lazy(() => import('pages/HomePage/HomePage'))
 const CatalogPage = lazy(() => import('pages/CatalogPage/CatalogPage'))
@@ -16,8 +17,10 @@ const App = () => {
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path='/' element={<HomePage />} />
-          <Route path='/campers' element={<CatalogPage />} />
-          <Route path='/campers/:id' element={<CamperPage />} />
+          <Route path='/campers' element={<ContainerLayout />}>
+            <Route index element={<CatalogPage />} />
+            <Route path=':id' element={<CamperPage />} />
+          </Route>
           <Route path='*' element={<NotFoundPage />} />
         </Routes>
       </Suspense>
