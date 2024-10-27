@@ -1,6 +1,6 @@
 .header {
   height: var(--header);
-  border-bottom: var(--border);
+  border-bottom: 1px solid var(--badges);
   background-color: var(--inputs);
 }
 
