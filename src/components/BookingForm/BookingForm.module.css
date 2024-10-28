@@ -1,0 +1,28 @@
+.field:not(:last-of-type) {
+  margin-bottom: 14px;
+}
+
+.input {
+  width: 100%;
+  padding: 18px;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--inputs);
+  color: var(--main);
+
+  &::placeholder {
+    color: var(--gray);
+  }
+
+  & + span {
+    font-size: 12px;
+    color: var(--button);
+  }
+}
+
+.submit {
+  display: flex;
+  justify-self: center;
+  justify-content: center;
+  margin-top: 24px;
+}

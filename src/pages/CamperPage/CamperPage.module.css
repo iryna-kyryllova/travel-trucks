@@ -151,4 +151,18 @@
 
 .booking {
   flex: 1;
+  padding: 44px 57px;
+  border: var(--border);
+  border-radius: 10px;
+}
+
+.bookingTitle {
+  margin-bottom: 8px;
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+.bookingText {
+  margin-bottom: 24px;
+  color: var(--gray);
 }

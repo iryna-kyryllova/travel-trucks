@@ -10,6 +10,7 @@ import InfoBlock from 'components/InfoBlock/InfoBlock'
 import Price from 'components/Price/Price'
 import EquipmentList from 'components/EquipmentList/EquipmentList'
 import Rating from 'components/Rating/Rating'
+import BookingForm from 'components/BookingForm/BookingForm'
 import { capitalizeFirstLetter } from 'utils/helpers'
 import styles from './CamperPage.module.css'
 
@@ -125,7 +126,11 @@ const CamperPage = () => {
                 </TabPanel>
               </div>
               <section className={styles.booking}>
-                <h2>Form</h2>
+                <h2 className={styles.bookingTitle}>Book your campervan now</h2>
+                <p className={styles.bookingText}>
+                  Stay connected! We are always ready to help you.
+                </p>
+                <BookingForm />
               </section>
             </div>
           </Tabs>
