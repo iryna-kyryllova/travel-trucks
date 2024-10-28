@@ -1,7 +1,7 @@
 .button {
   display: inline-block;
   min-width: 166px;
-  padding: 16px 30px;
+  padding: 16px 32px;
   border: none;
   border-radius: 200px;
   background-color: var(--button);
@@ -14,5 +14,20 @@
   &:hover,
   &:focus-visible {
     background-color: var(--button-hover);
+  }
+}
+
+.outlined {
+  min-width: initial;
+  padding: 15px 32px;
+  border: var(--border);
+  background-color: transparent;
+  color: var(--main);
+  transition: border-color var(--transition);
+
+  &:hover,
+  &:focus-visible {
+    border-color: var(--button-hover);
+    background-color: transparent;
   }
 }

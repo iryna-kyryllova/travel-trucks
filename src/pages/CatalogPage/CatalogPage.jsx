@@ -1,7 +1,14 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchCampers } from 'store/campers/operations'
-import { selectCampers, selectIsLoadingCampers, selectErrorCampers } from 'store/campers/selectors'
+import { incrementPage } from 'store/campers/slice'
+import {
+  selectCampers,
+  selectPage,
+  selectPagination,
+  selectIsLoadingCampers,
+  selectErrorCampers
+} from 'store/campers/selectors'
 import Loader from 'components/Loader/Loader'
 import ErrorMessage from 'components/ErrorMessage/ErrorMessage'
 import CampersList from 'components/CampersList/CampersList'
@@ -12,12 +19,18 @@ const CatalogPage = () => {
   const dispatch = useDispatch()
 
   const campers = useSelector(selectCampers)
+  const page = useSelector(selectPage)
+  const pagination = useSelector(selectPagination)
   const isLoadingCampers = useSelector(selectIsLoadingCampers)
   const errorCampers = useSelector(selectErrorCampers)
 
   useEffect(() => {
     dispatch(fetchCampers())
-  }, [dispatch])
+  }, [dispatch, page])
+
+  const handleLoadMore = () => {
+    dispatch(incrementPage())
+  }
 
   return (
     <>
@@ -25,13 +38,23 @@ const CatalogPage = () => {
       <div className={styles.layout}>
         <aside className={styles.sidebar}>Sidebar</aside>
         <main className={styles.main}>
-          {errorCampers && <ErrorMessage message={errorCampers} />}
           {campers.length > 0 && <CampersList data={campers} />}
           {campers.length === 0 && !isLoadingCampers && !errorCampers && <p>No campers found.</p>}
-          {isLoadingCampers && <Loader />}
-          <Button type='button' className={styles.loadMore}>
-            Load more
-          </Button>
+          {errorCampers && <ErrorMessage message={errorCampers} />}
+          <footer className={styles.footer}>
+            {isLoadingCampers ? (
+              <div className={styles.loader}>
+                <Loader />
+              </div>
+            ) : (
+              campers.length > 0 &&
+              pagination && (
+                <Button type='button' onClick={handleLoadMore} outlined>
+                  Load more
+                </Button>
+              )
+            )}
+          </footer>
         </main>
       </div>
     </>

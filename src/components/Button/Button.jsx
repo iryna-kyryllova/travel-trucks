@@ -8,23 +8,27 @@ import styles from './Button.module.css'
  * Props:
  * - `as`: 'button' (default) or 'link' (renders <Link>).
  * - `className`: Additional CSS classes.
+ * - `outlined`: Boolean flag, applies outline styles.
  *
  * Examples:
  * <Button type="submit">Submit</Button>
  * <Button as="link" to="/path">Link</Button>
+ * <Button outlined>Outlined Button</Button>
  */
 
-const Button = ({ as = 'button', className, children, ...otherProps }) => {
+const Button = ({ as = 'button', className, outlined, children, ...otherProps }) => {
+  const buttonClsx = clsx(styles.button, outlined && styles.outlined, className)
+
   if (as === 'link') {
     return (
-      <Link className={clsx(styles.button, className)} {...otherProps}>
+      <Link className={buttonClsx} {...otherProps}>
         {children}
       </Link>
     )
   }
 
   return (
-    <button className={clsx(styles.button, className)} {...otherProps}>
+    <button className={buttonClsx} {...otherProps}>
       {children}
     </button>
   )

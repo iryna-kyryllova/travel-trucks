@@ -2,7 +2,9 @@ import { createSlice } from '@reduxjs/toolkit'
 import { fetchCampers } from './operations'
 
 const initialState = {
-  items: [],
+  campers: [],
+  page: 1,
+  pagination: true,
   isLoading: false,
   error: null
 }
@@ -10,6 +12,11 @@ const initialState = {
 export const campersSlice = createSlice({
   name: 'campers',
   initialState,
+  reducers: {
+    incrementPage: (state) => {
+      state.page += 1
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchCampers.pending, (state) => {
@@ -18,7 +25,8 @@ export const campersSlice = createSlice({
       })
       .addCase(fetchCampers.fulfilled, (state, { payload }) => {
         state.isLoading = false
-        state.items = payload
+        state.campers = state.page === 1 ? payload.items : [...state.campers, ...payload.items]
+        state.pagination = state.campers.length < payload.total
       })
       .addCase(fetchCampers.rejected, (state, { payload }) => {
         state.isLoading = false
@@ -26,5 +34,7 @@ export const campersSlice = createSlice({
       })
   }
 })
+
+export const { incrementPage } = campersSlice.actions
 
 export default campersSlice.reducer

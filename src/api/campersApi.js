@@ -5,11 +5,11 @@ const CAMPERS_LIMIT = 4
 
 axios.defaults.baseURL = BASE_URL
 
-export const fetchCampersApi = async () => {
+export const fetchCampersApi = async (page) => {
   const { data } = await axios('/campers', {
     params: {
       limit: CAMPERS_LIMIT,
-      page: 1
+      page
     }
   })
   return data

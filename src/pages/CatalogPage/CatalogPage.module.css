@@ -11,3 +11,12 @@
 .main {
   width: calc(100% - 360px - 64px);
 }
+
+.footer {
+  text-align: center;
+}
+
+.loader {
+  text-align: left;
+  line-height: 56px;
+}
