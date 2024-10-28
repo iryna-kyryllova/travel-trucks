@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import toast from 'react-hot-toast'
 import { fetchCampers } from 'store/campers/operations'
 import { incrementPage } from 'store/campers/slice'
 import {
@@ -11,6 +12,7 @@ import {
 } from 'store/campers/selectors'
 import { addToFavorites, removeFromFavorites } from 'store/favorites/slice'
 import { selectFavorites } from 'store/favorites/selectors'
+import { selectFilters } from 'store/filters/selectors'
 import FiltersForm from 'components/FiltersForm/FiltersForm'
 import Loader from 'components/Loader/Loader'
 import ErrorMessage from 'components/ErrorMessage/ErrorMessage'
@@ -27,10 +29,11 @@ const CatalogPage = () => {
   const isLoadingCampers = useSelector(selectIsLoadingCampers)
   const errorCampers = useSelector(selectErrorCampers)
   const favorites = useSelector(selectFavorites)
+  const filters = useSelector(selectFilters)
 
   useEffect(() => {
     dispatch(fetchCampers())
-  }, [dispatch, page])
+  }, [dispatch, page, filters])
 
   const handleLoadMore = () => {
     dispatch(incrementPage())

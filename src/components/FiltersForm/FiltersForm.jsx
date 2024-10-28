@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux'
 import toast from 'react-hot-toast'
 import { setFilters } from 'store/filters/slice'
+import { resetPage } from 'store/campers/slice'
 import Icon from 'components/Icon/Icon'
 import FiltersItem from 'components/FiltersItem/FiltersItem'
 import Button from 'components/Button/Button'
@@ -39,8 +40,8 @@ const FiltersForm = () => {
       return
     }
 
-    console.log(data)
     dispatch(setFilters(data))
+    dispatch(resetPage())
   }
 
   return (

@@ -15,6 +15,9 @@ export const campersSlice = createSlice({
   reducers: {
     incrementPage: (state) => {
       state.page += 1
+    },
+    resetPage: (state) => {
+      state.page = 1
     }
   },
   extraReducers: (builder) => {
@@ -30,11 +33,12 @@ export const campersSlice = createSlice({
       })
       .addCase(fetchCampers.rejected, (state, { payload }) => {
         state.isLoading = false
+        state.campers = []
         state.error = payload
       })
   }
 })
 
-export const { incrementPage } = campersSlice.actions
+export const { incrementPage, resetPage } = campersSlice.actions
 
 export default campersSlice.reducer

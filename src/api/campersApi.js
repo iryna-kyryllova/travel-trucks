@@ -5,12 +5,29 @@ const CAMPERS_LIMIT = 4
 
 axios.defaults.baseURL = BASE_URL
 
-export const fetchCampersApi = async (page) => {
-  const { data } = await axios('/campers', {
-    params: {
-      limit: CAMPERS_LIMIT,
-      page
+const transformFilters = (filters) => {
+  const params = {}
+
+  Object.entries(filters).forEach(([key, value]) => {
+    if (Array.isArray(value)) {
+      params[key] = value.join(',')
+    } else {
+      params[key] = value
     }
   })
+
+  return params
+}
+
+export const fetchCampersApi = async (page, filters = {}) => {
+  const filtersParams = transformFilters(filters)
+
+  const params = {
+    limit: CAMPERS_LIMIT,
+    page,
+    ...filtersParams
+  }
+
+  const { data } = await axios.get('/campers', { params })
   return data
 }
