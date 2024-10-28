@@ -1,6 +1,5 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import toast from 'react-hot-toast'
 import { fetchCampers } from 'store/campers/operations'
 import { incrementPage } from 'store/campers/slice'
 import {
