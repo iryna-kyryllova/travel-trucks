@@ -8,7 +8,7 @@ import styles from './Loader.module.css'
  * Props:
  * - `type`: 'page' or 'section'. Defaults to 'section'.
  *
- * Usage:
+ * Examples:
  * <Loader type="page" />
  * <Loader type="section" />
  */

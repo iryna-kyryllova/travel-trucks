@@ -23,8 +23,8 @@ const CatalogPage = () => {
     <>
       <h1 className='sr-only'>Catalog</h1>
       <div className={styles.layout}>
-        <aside>Sidebar</aside>
-        <main>
+        <aside className={styles.sidebar}>Sidebar</aside>
+        <main className={styles.main}>
           {errorCampers && <ErrorMessage message={errorCampers} />}
           {campers.length > 0 && <CampersList data={campers} />}
           {campers.length === 0 && !isLoadingCampers && !errorCampers && <p>No campers found.</p>}

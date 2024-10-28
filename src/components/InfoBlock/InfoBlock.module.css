@@ -1,0 +1,23 @@
+.info {
+  color: var(--main);
+}
+
+.item {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+
+  &:not(:last-child) {
+    margin-right: 16px;
+  }
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+}
+
+.reviews {
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+}

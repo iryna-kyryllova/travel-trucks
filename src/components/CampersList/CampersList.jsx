@@ -3,13 +3,16 @@ import styles from './CampersList.module.css'
 
 const CampersList = ({ data }) => {
   return (
-    <ul className={styles.list}>
-      {data.map((item) => (
-        <li key={item.id}>
-          <CamperCard data={item} />
-        </li>
-      ))}
-    </ul>
+    <section>
+      <h2 className='sr-only'>Campers</h2>
+      <ul className={styles.list}>
+        {data.map((item) => (
+          <li key={item.id}>
+            <CamperCard data={item} />
+          </li>
+        ))}
+      </ul>
+    </section>
   )
 }
 

@@ -1,5 +1,13 @@
 .layout {
-  display: grid;
-  grid-template-columns: 360px 1fr;
+  display: flex;
+  align-items: flex-start;
   gap: 64px;
+}
+
+.sidebar {
+  width: 360px;
+}
+
+.main {
+  width: calc(100% - 360px - 64px);
 }

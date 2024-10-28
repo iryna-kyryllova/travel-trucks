@@ -3,7 +3,7 @@ import clsx from 'clsx'
 import styles from './Button.module.css'
 
 /**
- * Button component supporting <button> and <Link> elements.
+ * Component supporting <button> and <Link> elements.
  *
  * Props:
  * - `as`: 'button' (default) or 'link' (renders <Link>).
@@ -14,9 +14,7 @@ import styles from './Button.module.css'
  * <Button as="link" to="/path">Link</Button>
  */
 
-const Button = (props) => {
-  const { as = 'button', className, children, ...otherProps } = props
-
+const Button = ({ as = 'button', className, children, ...otherProps }) => {
   if (as === 'link') {
     return (
       <Link className={clsx(styles.button, className)} {...otherProps}>

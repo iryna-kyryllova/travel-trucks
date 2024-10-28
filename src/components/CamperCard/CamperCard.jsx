@@ -1,9 +1,47 @@
 import { Link } from 'react-router-dom'
 import Button from 'components/Button/Button'
+import Price from '../Price/Price'
+import Icon from 'components/Icon/Icon'
+import InfoBlock from 'components/InfoBlock/InfoBlock'
+import EquipmentList from 'components/EquipmentList/EquipmentList'
 import styles from './CamperCard.module.css'
 
 const CamperCard = (props) => {
-  const { id, gallery, name, price, rating, reviews, location, description } = props.data
+  const {
+    id,
+    gallery,
+    name,
+    price,
+    rating,
+    reviews,
+    location,
+    description,
+    transmission,
+    engine,
+    AC,
+    bathroom,
+    kitchen,
+    TV,
+    radio,
+    refrigerator,
+    microwave,
+    gas,
+    water
+  } = props.data
+
+  const equipment = {
+    transmission,
+    engine,
+    AC,
+    bathroom,
+    kitchen,
+    TV,
+    radio,
+    refrigerator,
+    microwave,
+    gas,
+    water
+  }
 
   return (
     <article className={styles.card}>
@@ -12,25 +50,20 @@ const CamperCard = (props) => {
       </Link>
       <div className={styles.content}>
         <div className={styles.header}>
-          <h2 className={styles.title}>{name}</h2>
+          <h3 className={styles.title}>{name}</h3>
           <div className={styles.actions}>
-            <strong className={styles.price}>€{price}</strong>
-            <button className={styles.favoriteBtn}>O</button>
+            <Price number={price} />
+            <button type='button' className={styles.favoriteBtn}>
+              <Icon name='heart' className={styles.favoriteIcon} />
+            </button>
           </div>
-          <div className={styles.info}>
-            <span>
-              {rating}({reviews.length} Reviews)
-            </span>
-            <span>{location}</span>
-          </div>
-          <p className={styles.description}>{description}</p>
-          <ul className={styles.equipment}>
-            <li>Equipment</li>
-          </ul>
-          <Button as='link' to={`/campers/${id}`} className={styles.btn}>
-            Show more
-          </Button>
         </div>
+        <InfoBlock rating={rating} reviews={reviews} location={location} />
+        <p className={styles.description}>{description}</p>
+        <EquipmentList items={equipment} />
+        <Button as='link' to={`/campers/${id}`} className={styles.btn}>
+          Show more
+        </Button>
       </div>
     </article>
   )
