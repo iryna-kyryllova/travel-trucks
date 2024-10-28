@@ -11,6 +11,7 @@ import {
 } from 'store/campers/selectors'
 import { addToFavorites, removeFromFavorites } from 'store/favorites/slice'
 import { selectFavorites } from 'store/favorites/selectors'
+import FiltersForm from 'components/FiltersForm/FiltersForm'
 import Loader from 'components/Loader/Loader'
 import ErrorMessage from 'components/ErrorMessage/ErrorMessage'
 import CampersList from 'components/CampersList/CampersList'
@@ -48,7 +49,9 @@ const CatalogPage = () => {
     <>
       <h1 className='sr-only'>Catalog</h1>
       <div className={styles.layout}>
-        <aside className={styles.sidebar}>Sidebar</aside>
+        <aside className={styles.sidebar}>
+          <FiltersForm />
+        </aside>
         <main className={styles.main}>
           {campers.length > 0 && (
             <CampersList

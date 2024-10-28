@@ -1,0 +1,82 @@
+.location {
+  margin-bottom: 40px;
+}
+
+.locationLabel {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--gray);
+}
+
+.locationField {
+  position: relative;
+}
+
+.locationInput {
+  width: 100%;
+  padding: 16px 18px 16px 46px;
+  border: none;
+  border-radius: 12px;
+  background-color: var(--inputs);
+  color: var(--main);
+
+  &:focus + * {
+    fill: var(--main);
+  }
+
+  &::placeholder {
+    color: var(--gray);
+  }
+}
+
+.locationIcon {
+  position: absolute;
+  top: 50%;
+  left: 18px;
+  transform: translateY(-50%);
+  fill: var(--gray);
+  transition: fill var(--transition);
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--text);
+}
+
+.fieldset {
+  margin: 0 0 32px;
+  padding: 0;
+  border: none;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+.legend {
+  display: block;
+  width: 100%;
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: var(--border);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--main);
+}
+
+.filtersList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+
+  & > * {
+    width: calc((100% - 24px) / 3);
+  }
+}
+
+.submit {
+  margin-top: 40px;
+}
