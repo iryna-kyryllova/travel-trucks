@@ -9,6 +9,8 @@ import {
   selectIsLoadingCampers,
   selectErrorCampers
 } from 'store/campers/selectors'
+import { addToFavorites, removeFromFavorites } from 'store/favorites/slice'
+import { selectFavorites } from 'store/favorites/selectors'
 import Loader from 'components/Loader/Loader'
 import ErrorMessage from 'components/ErrorMessage/ErrorMessage'
 import CampersList from 'components/CampersList/CampersList'
@@ -23,6 +25,7 @@ const CatalogPage = () => {
   const pagination = useSelector(selectPagination)
   const isLoadingCampers = useSelector(selectIsLoadingCampers)
   const errorCampers = useSelector(selectErrorCampers)
+  const favorites = useSelector(selectFavorites)
 
   useEffect(() => {
     dispatch(fetchCampers())
@@ -32,13 +35,28 @@ const CatalogPage = () => {
     dispatch(incrementPage())
   }
 
+  const handleFavoriteToggle = (camperId) => {
+    const isFavorite = favorites.includes(camperId)
+    if (isFavorite) {
+      dispatch(removeFromFavorites(camperId))
+    } else {
+      dispatch(addToFavorites(camperId))
+    }
+  }
+
   return (
     <>
       <h1 className='sr-only'>Catalog</h1>
       <div className={styles.layout}>
         <aside className={styles.sidebar}>Sidebar</aside>
         <main className={styles.main}>
-          {campers.length > 0 && <CampersList data={campers} />}
+          {campers.length > 0 && (
+            <CampersList
+              data={campers}
+              favorites={favorites}
+              onFavoriteToggle={handleFavoriteToggle}
+            />
+          )}
           {campers.length === 0 && !isLoadingCampers && !errorCampers && <p>No campers found.</p>}
           {errorCampers && <ErrorMessage message={errorCampers} />}
           <footer className={styles.footer}>

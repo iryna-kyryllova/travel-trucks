@@ -7,6 +7,8 @@ import EquipmentList from 'components/EquipmentList/EquipmentList'
 import styles from './CamperCard.module.css'
 
 const CamperCard = (props) => {
+  const { favorites, onFavoriteToggle } = props
+
   const {
     id,
     gallery,
@@ -53,8 +55,15 @@ const CamperCard = (props) => {
           <h3 className={styles.title}>{name}</h3>
           <div className={styles.actions}>
             <Price number={price} />
-            <button type='button' className={styles.favoriteBtn}>
-              <Icon name='heart' className={styles.favoriteIcon} />
+            <button
+              type='button'
+              className={styles.favoriteBtn}
+              onClick={() => onFavoriteToggle(id)}>
+              {favorites.includes(id) ? (
+                <Icon name='heart_active' className={styles.favoriteIcon} />
+              ) : (
+                <Icon name='heart' className={styles.favoriteIcon} />
+              )}
             </button>
           </div>
         </div>
